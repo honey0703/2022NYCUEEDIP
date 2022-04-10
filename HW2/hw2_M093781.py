@@ -19,14 +19,13 @@ def hist(img):
     plt.show()
 
 
-# Median Filter
-# Refernce: https://www.twblogs.net/a/5bb031222b7177781a0fd3e1)
+# Use median Filter to minimize the noise.
 def blur(img, factor): 
     image_blur = cv2.medianBlur(img, factor)
     return image_blur
 
 
-# Use Laplancian filter + original image to implement sharpness
+# Use -Laplancian filter + original image to implement sharpness
 def sharp(img):
     kernel = np.array([[0, -1, 0],
                        [-1, 5, -1],
@@ -48,8 +47,8 @@ def norm(img):
     return img_out
 
 
-# Modified their contrast 
-# Refernce: https://www.wongwonggoods.com/python/python_opencv/opencv-modify-contrast/)
+# Modified their contrast and brightness
+# Refernce: https://www.wongwonggoods.com/python/python_opencv/opencv-modify-contrast/
 def contrast(img, brightness=20 , contrast=-25):
     B = brightness / 255.0
     c = contrast / 255.0 
@@ -59,7 +58,7 @@ def contrast(img, brightness=20 , contrast=-25):
     return img
 
 
-# Homomorphic Filter
+# Homomorphic Filter 
 # Reference: https://stackoverflow.com/questions/64284739/homomorphic-filtering-on-the-frequency-domain-python-opencv
 def homomorphic(img, radius=5):
     # read input and convert to grayscale
@@ -106,7 +105,7 @@ def homomorphic(img, radius=5):
 
 if __name__ == '__main__':
     # ----- input 1 ------------------------------------------------------------------
-    img1 = cv2.imread('input1.bmp')
+    img1 = cv2.imread('input/input1.bmp')
     hist_img = hist(img1)                             # Draw input grayscale histgram
     # --- Homomorphic                                 # Homomorphic
     b, g, r = cv2.split(img1)
@@ -123,23 +122,23 @@ if __name__ == '__main__':
     tmp = np.hstack((img1, image_contrast))           # Plot 2 images together
     plt.imshow(tmp)  
     plt.show()
-    cv2.imwrite('output1.bmp', image_contrast)        # Save output image
+    cv2.imwrite('output/output1.bmp', image_contrast) # Save output image
     
     # ----- input 2 ------------------------------------------------------------------
-    img2 = cv2.imread('input2.bmp')
+    img2 = cv2.imread('input/input2.bmp')
     hist_img = hist(img2)                             # Draw inpput grayscale histgram
     image_blur = blur(img2, 7)                        # Blur
     image_sharp = sharp(image_blur)                   # Sharpness
     image_contrast = contrast(image_sharp, -60, 20)   # Contrast
-    image_norm = norm(image_contrast)
+    image_norm = norm(image_contrast)                 # Normalization
     hist_img_o = hist(image_norm)                     # Draw output grayscale histgram
     tmp = np.hstack((img2, image_norm))               # Plot 2 images together
     plt.imshow(tmp)
     plt.show()
-    cv2.imwrite('output2.bmp', image_norm)            # Save output image
+    cv2.imwrite('output/output2.bmp', image_norm)     # Save output image
     
     # ----- input 3 ------------------------------------------------------------------
-    img3 = cv2.imread('input3.bmp')
+    img3 = cv2.imread('input/input3.bmp')
     hist_img = hist(img3)                             # Draw input grayscale histgram
     # --- Homomorphic                                 # Homomorphic
     b, g, r = cv2.split(img3)
@@ -154,10 +153,10 @@ if __name__ == '__main__':
     tmp = np.hstack((img3, image_contrast))           # Plot 2 images together
     plt.imshow(tmp)  
     plt.show()
-    cv2.imwrite('output3.bmp', image_contrast)        # Save output image
+    cv2.imwrite('output/output3.bmp', image_contrast) # Save output image
     
     # ----- input 4 --------------------------------------------------------------------
-    img4 = cv2.imread('input4.bmp')
+    img4 = cv2.imread('input/input4.bmp')
     hist_img = hist(img4)
     image_contrast = contrast(img4, 25, 60)            # Contrast
     image_sharp = sharp(image_contrast)                # Sharpness
@@ -165,7 +164,7 @@ if __name__ == '__main__':
     tmp = np.hstack((img4, image_sharp))               # Plot 2 images together
     plt.imshow(tmp)  
     plt.show()
-    cv2.imwrite('output4.bmp', image_sharp)            # Save output image
+    cv2.imwrite('output/output4.bmp', image_sharp)     # Save output image
 
 
 
