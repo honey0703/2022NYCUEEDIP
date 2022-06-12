@@ -1,0 +1,26 @@
+<annotation>
+  <object>
+    <name>open_circuit</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>69</xmin>
+      <xmax>123</xmax>
+      <ymin>1756</ymin>
+      <ymax>1823</ymax>
+    </bndbox>
+  </object>
+  <object>
+    <name>open_circuit</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>1703</xmin>
+      <xmax>1758</xmax>
+      <ymin>501</ymin>
+      <ymax>556</ymax>
+    </bndbox>
+  </object>
+</annotation>

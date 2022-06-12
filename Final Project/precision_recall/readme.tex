@@ -1,0 +1,8 @@
+test.jpg 測試圖片
+test.xml  測試圖片瑕疵所在位置之ground truth
+test_p.xml  測試圖片瑕疵所在位置之預測
+
+test_boxes.jpg 在圖片test.jpg上印出“瑕疵所在位置之ground truth”及“瑕疵所在位置之預測” ，其中綠色框框表ground truth，紅色框框表prediction
+
+precision_recall.py： 輸入test.xml, test_p.xml, 計算precision and recall
+print_boxes.py :  輸入test.jpg, test.xml, test_p.xml  輸出test_boxes.jpg  
